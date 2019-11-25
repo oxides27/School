@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+char* recupera(int notas) {
+	switch(notas) {
+		case 1:
+			return "Pedro";
+		case 2:
+			return "Albenio";
+		case 3:
+			return "Elenice";
+		case 4:
+			return "Saul";
+		case 5:
+			return "Felipe";
+		
+
+		default:
+			return "[Indisponível]";
+
+	}
+}
+
+int main(void) {
+	float notas[5];
+	float total = 0;
+	int piorNota = 0, melhorNota = 0;
+
+	printf("A melhor avaliação do ano 2019, informe:\n");
+
+	for(int i = 0; i < 5; i++) {
+		printf("notas em %s: ", recupera(i+1));
+
+		scanf("%f", &notas[i]);
+
+		total += notas[i];
+
+		if(notas[piorNota] > notas[i]) {
+			piorNota = i;
+		}
+
+		if(notas[melhorNota] < notas[i]) {
+			melhorNota = i;
+		}
+	}
+
+	printf("Totalizando >>>>>>>>>>>>>>>\n");
+	printf("Media das Notas foi  %.2f\n", total / 5);
+	printf("Maior nota foi de %s ( %.2f)\n", recupera(melhorNota + 1), notas[melhorNota]);
+	printf("Menor nota foi de %s ( %.2f)\n", recupera(piorNota + 1), notas[piorNota]);
+
+  	return 0;
+}
